@@ -13,14 +13,14 @@ int main(){
     assert(std::cin.good());
 
     std::cin >> sz >> el;
-    cache::cache_2Q<int> c{el};
+    cache::cache_2Q_<int, int> c{el};
 
     for (int i = 0; i < sz; i++) {
         int key;
 
         assert(std::cin.good());
         std::cin >> key;
-        if (c.LookupUpdateIn(key, slow_get_page)) {
+        if (c.LookUpUpdate(key, slow_get_page)) {
             hits++;
         }
     }
