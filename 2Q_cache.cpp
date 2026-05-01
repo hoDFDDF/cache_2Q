@@ -6,21 +6,22 @@
 int slow_get_page(int key) { return key; }
 
 int main(){
-    int hits = 0; 
-    size_t sz;
-    size_t el;
+
+    int hits   = 0; 
+    size_t cache_sz  = 0;
+    size_t cache_cap = 0;
     
     assert(std::cin.good());
 
-    std::cin >> sz >> el;
-    cache::cache_2Q_<int, int> c{el};
+    std::cin >> cache_sz >> cache_cap;
+    cache::cache_2Q_<int, int> my_cache{cache_cap};
 
-    for (int i = 0; i < sz; i++) {
+    for (int i = 0; i < cache_sz; i++) {
         int key;
 
         assert(std::cin.good());
         std::cin >> key;
-        if (c.LookUpUpdate(key, slow_get_page)) {
+        if (my_cache.LookUpUpdate(key, slow_get_page)) {
             hits++;
         }
     }

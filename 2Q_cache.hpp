@@ -25,7 +25,7 @@ namespace cache {
             ring_buffer<keyT, Value> in_buffer;
             std::list<keyT> cache_out_;
 
-            cache_2Q_(size_t cache_sz_) : cache_sz_(cache_sz_){
+            cache_2Q_(size_t cache_sz_) : cache_sz_(cache_sz_), in_buffer(cache_sz_ - static_cast<size_t>(std::ceil(hot_percent_of_cahce_sz_ * cache_sz_))) { 
                 hot_sz_  = static_cast<size_t>(std::ceil(hot_percent_of_cahce_sz_ * cache_sz_));
                 out_sz_ = static_cast<size_t>(std::floor(out_percent_of_cahce_sz_ * cache_sz_));
             }
@@ -38,9 +38,10 @@ namespace cache {
             struct node {
                 Value val;
                 listIt state;
-                
+
                 typename std::list<std::pair<keyT, Value>>::iterator it;  
 
+                //TODO Add check, so that it small input capacity, the size of IN_ wont't be zero
                 node (Value v, listIt s, typename std::list<std::pair<keyT, Value>>::iterator i = {})
                     :val(v), state(s), it(i) {} 
             };
@@ -55,16 +56,7 @@ namespace cache {
                     
                     if (hit_it != hash_.end()) {
 
-                        if (hit_it->second.state == listIt::IN_) {
-                            
-                            assert(hit_it->second.state == listIt::IN_ && "Expected in_ queue paramets (vector pair)");
-                            
-                            if (in_buffer.FullRing()) {
-                                keyT received_key = in_buffer.RingPop(); 
-                                cache_out_.emplace_front(received_key);
-                                return false;
-                            }
-
+                        if (hit_it->second.state == listIt::IN_) { 
                             return true;
                         }
 
@@ -76,7 +68,6 @@ namespace cache {
 
                                 hash_.erase(cache_hot_.back().first);
                                 cache_hot_.pop_back();
-                                return false; //not sure
                             }
 
                             auto hot_eltit = hit_it->second;
@@ -88,21 +79,31 @@ namespace cache {
                         else if (hit_it->second.state == listIt::OUT_) {
                             if (FullOut()) {
                                 hash_.erase(cache_out_.back());
-                                cache_out_.pop_back();    
-                                return false;         
+                                cache_out_.pop_back();            
                             }
 
                             cache_hot_.emplace_front(key, slow_get_page(key));
 
+                            hit_it->second.state  =  listIt::HOT_;
+                            hit_it->second.it = cache_hot_.begin();
+
                             return false;
                         }
-                        
-                        auto inserted_entry = in_buffer.RingPush(key);
-
-                        hash_.emplace(key, node {inserted_entry.second, listIt::IN_});
-                        return false;
-
                     }
+
+                    if (in_buffer.FullRing()) {
+                        keyT received_key = in_buffer.RingPop(); 
+                        cache_out_.emplace_front(received_key);
+                        hash_.at(received_key).state = listIt::OUT_;                         
+                    }
+
+                    Value fresh_data = slow_get_page(key);
+                    in_buffer.RingPush(key);
+
+                    hash_.emplace(key, node {fresh_data, listIt::IN_});
+
+                    return false;
+
                 }
         };
 };
