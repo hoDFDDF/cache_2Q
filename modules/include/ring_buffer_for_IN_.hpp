@@ -4,7 +4,6 @@
 #include <vector>
 #include <iostream>
 
-
 template <typename keyT, typename Value>
     class ring_buffer{
 

@@ -1,6 +1,5 @@
 #pragma once 
 
-
 #include "ring_buffer_for_IN_.hpp"
 
 #include <list>
@@ -24,6 +23,7 @@ namespace cache {
             std::list<keyT> cache_out_;
 
             cache_2Q_(size_t cache_sz_) : cache_sz_{cache_sz_} {
+
                 in_sz_ = std::max<size_t>(1, cache_sz_ / 4); 
                 hot_sz_ = cache_sz_ - in_sz_;
                 out_sz_ = std::max<size_t>(1, cache_sz_ / 2);
@@ -106,8 +106,4 @@ namespace cache {
 
                 }
         };
-};
-
-
-           
-            
+};  
