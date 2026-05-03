@@ -1,0 +1,4 @@
+/home/kramer/repos/cache_2Q/build/CMakeFiles/modules.dir
+/home/kramer/repos/cache_2Q/build/CMakeFiles/Tests.dir
+/home/kramer/repos/cache_2Q/build/CMakeFiles/edit_cache.dir
+/home/kramer/repos/cache_2Q/build/CMakeFiles/rebuild_cache.dir
