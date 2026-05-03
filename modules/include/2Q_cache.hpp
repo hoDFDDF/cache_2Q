@@ -4,9 +4,7 @@
 
 #include <list>
 #include <unordered_map>
-#include <cmath>
 #include <vector>
-#include <cassert>
 
 namespace cache {
 
@@ -17,6 +15,7 @@ namespace cache {
             size_t cache_sz_;
             size_t   hot_sz_;
             size_t   out_sz_;
+            size_t    in_sz_;
 
             std::list<std::pair<keyT, Value>> cache_hot_;
             ring_buffer<keyT, Value> in_buffer;
@@ -33,7 +32,7 @@ namespace cache {
 
             bool FullHot () const { return  cache_hot_.size() == hot_sz_; }
             bool FullOut () const { return  cache_out_.size() == out_sz_; } 
-
+            
             enum class listIt{ IN_, HOT_, OUT_ };
             
             struct node {
@@ -45,8 +44,14 @@ namespace cache {
                 node (Value v, listIt s, typename std::list<std::pair<keyT, Value>>::iterator i = {})
                     :val(v), state(s), it(i) {} 
             };
-
+            
             std::unordered_map<keyT, node> hash_;
+
+            public:
+            listIt GetKeyStatus(keyT key) const{
+                auto it = hash_.find(key);
+                return it->second.state;
+            }
 
             template <typename F>
 

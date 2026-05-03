@@ -6,6 +6,7 @@
 
 template <typename keyT, typename Value>
     class ring_buffer{
+        public:
 
         size_t in_sz_;
         std::vector<std::pair<keyT, Value>> cache_in_;
@@ -17,12 +18,12 @@ template <typename keyT, typename Value>
         bool isFull()  const { return cache_in_.capacity() ==  cache_in_.size(); }
         bool isEmpty() const {       return cache_in_.empty(); }
         
-        auto RingPush(keyT key){
+        auto RingPush(keyT key) {
             int temp_head = head;
 
             cache_in_[temp_head].first = key;
             head = (head + 1) % in_sz_;
-
+            
             return cache_in_[temp_head];
         }
          
