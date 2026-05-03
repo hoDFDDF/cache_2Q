@@ -79,7 +79,7 @@ TEST (HotCacheCheck, SpliceMethodWork){
     EXPECT_EQ(cache.GetKeyStatus(3),  (cache::cache_2Q_<int, int>::listIt::HOT_));
     EXPECT_EQ(cache.cache_hot_.front().first, 3);
 
-    cache.LookUpUpdate(1, slow_get_page(1));
+    cache.LookUpUpdate(1, slow_get_page<int>);
     EXPECT_EQ(cache.GetKeyStatus(1), (cache::cache_2Q_<int, int>::listIt::HOT_));
     EXPECT_EQ(cache.cache_hot_.front().first, 1);
 }   

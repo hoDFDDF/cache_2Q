@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kramer/repos/cache_2Q/build/CMakeFiles /home/kramer/repos/cache_2Q/build//CMakeFiles/progress.marks
@@ -117,78 +162,82 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named modules
+# Target rules for targets named 2Q-cache
 
 # Build rule for target.
-modules: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules
-.PHONY : modules
+2Q-cache: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 2Q-cache
+.PHONY : 2Q-cache
 
 # fast build rule for target.
-modules/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/modules.dir/build.make CMakeFiles/modules.dir/build
-.PHONY : modules/fast
+2Q-cache/fast:
+	$(MAKE) $(MAKESILENT) -f modules/CMakeFiles/2Q-cache.dir/build.make modules/CMakeFiles/2Q-cache.dir/build
+.PHONY : 2Q-cache/fast
 
 #=============================================================================
-# Target rules for targets named Tests
+# Target rules for targets named unit_tests
 
 # Build rule for target.
-Tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tests
-.PHONY : Tests
+unit_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests
+.PHONY : unit_tests
 
 # fast build rule for target.
-Tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/build
-.PHONY : Tests/fast
+unit_tests/fast:
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests.dir/build.make Tests/CMakeFiles/unit_tests.dir/build
+.PHONY : unit_tests/fast
 
-Tests/unit_tests/unit_tests.o: Tests/unit_tests/unit_tests.cpp.o
-.PHONY : Tests/unit_tests/unit_tests.o
+#=============================================================================
+# Target rules for targets named gmock
 
-# target to build an object file
-Tests/unit_tests/unit_tests.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Tests/unit_tests/unit_tests.cpp.o
-.PHONY : Tests/unit_tests/unit_tests.cpp.o
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
 
-Tests/unit_tests/unit_tests.i: Tests/unit_tests/unit_tests.cpp.i
-.PHONY : Tests/unit_tests/unit_tests.i
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
 
-# target to preprocess a source file
-Tests/unit_tests/unit_tests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Tests/unit_tests/unit_tests.cpp.i
-.PHONY : Tests/unit_tests/unit_tests.cpp.i
+#=============================================================================
+# Target rules for targets named gmock_main
 
-Tests/unit_tests/unit_tests.s: Tests/unit_tests/unit_tests.cpp.s
-.PHONY : Tests/unit_tests/unit_tests.s
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
 
-# target to generate assembly for a file
-Tests/unit_tests/unit_tests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Tests/unit_tests/unit_tests.cpp.s
-.PHONY : Tests/unit_tests/unit_tests.cpp.s
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
 
-modules/source/2Q_cache.o: modules/source/2Q_cache.cpp.o
-.PHONY : modules/source/2Q_cache.o
+#=============================================================================
+# Target rules for targets named gtest
 
-# target to build an object file
-modules/source/2Q_cache.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/modules.dir/build.make CMakeFiles/modules.dir/modules/source/2Q_cache.cpp.o
-.PHONY : modules/source/2Q_cache.cpp.o
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
 
-modules/source/2Q_cache.i: modules/source/2Q_cache.cpp.i
-.PHONY : modules/source/2Q_cache.i
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
 
-# target to preprocess a source file
-modules/source/2Q_cache.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/modules.dir/build.make CMakeFiles/modules.dir/modules/source/2Q_cache.cpp.i
-.PHONY : modules/source/2Q_cache.cpp.i
+#=============================================================================
+# Target rules for targets named gtest_main
 
-modules/source/2Q_cache.s: modules/source/2Q_cache.cpp.s
-.PHONY : modules/source/2Q_cache.s
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
 
-# target to generate assembly for a file
-modules/source/2Q_cache.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/modules.dir/build.make CMakeFiles/modules.dir/modules/source/2Q_cache.cpp.s
-.PHONY : modules/source/2Q_cache.cpp.s
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
 
 # Help Target
 help:
@@ -197,15 +246,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... Tests"
-	@echo "... modules"
-	@echo "... Tests/unit_tests/unit_tests.o"
-	@echo "... Tests/unit_tests/unit_tests.i"
-	@echo "... Tests/unit_tests/unit_tests.s"
-	@echo "... modules/source/2Q_cache.o"
-	@echo "... modules/source/2Q_cache.i"
-	@echo "... modules/source/2Q_cache.s"
+	@echo "... 2Q-cache"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
+	@echo "... unit_tests"
 .PHONY : help
 
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cassert>
 
-#include "include/2Q_cache.hpp"
+#include "2Q_cache.hpp"
 
 int slow_get_page(int key) { return key; }
 

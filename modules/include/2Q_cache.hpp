@@ -27,7 +27,7 @@ namespace cache {
                 hot_sz_ = cache_sz_ - in_sz_;
                 out_sz_ = std::max<size_t>(1, cache_sz_ / 2);
 
-                in_buffer = ring_buffer<keyT, Value(in_sz_)>;
+                in_buffer = ring_buffer<keyT, Value>{in_sz_};
             }
 
             bool FullHot () const { return  cache_hot_.size() == hot_sz_; }
@@ -103,6 +103,7 @@ namespace cache {
                     }
 
                     Value fresh_data = slow_get_page(key);
+
                     in_buffer.RingPush(key);
 
                     hash_.emplace(key, node {fresh_data, listIt::IN_});

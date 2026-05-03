@@ -26,12 +26,11 @@ template <typename keyT, typename Value>
             
             return cache_in_[temp_head];
         }
-         
-        private:
+        
         keyT RingPop() {
             if (!isEmpty()) { 
                 keyT temp_tail_key = cache_in_[tail].first; 
-
+                
                 tail = (tail + 1) % in_sz_;
                 return temp_tail_key;
             }

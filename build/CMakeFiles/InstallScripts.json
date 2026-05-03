@@ -1,7 +1,12 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/kramer/repos/cache_2Q/build/cmake_install.cmake"
+		"/home/kramer/repos/cache_2Q/build/cmake_install.cmake",
+		"/home/kramer/repos/cache_2Q/build/modules/cmake_install.cmake",
+		"/home/kramer/repos/cache_2Q/build/Tests/cmake_install.cmake",
+		"/home/kramer/repos/cache_2Q/build/_deps/googletest-build/cmake_install.cmake",
+		"/home/kramer/repos/cache_2Q/build/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/home/kramer/repos/cache_2Q/build/_deps/googletest-build/googletest/cmake_install.cmake"
 	],
 	"Parallel" : false
 }
