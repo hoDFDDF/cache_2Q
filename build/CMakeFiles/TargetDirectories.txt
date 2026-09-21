@@ -16,6 +16,7 @@
 /Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/modules/CMakeFiles/install/strip.dir
 /Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/Tests/CMakeFiles/unit_tests_2q.dir
 /Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/Tests/CMakeFiles/unit_tests_lfu.dir
+/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/Tests/CMakeFiles/lfu_benchmark.dir
 /Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/Tests/CMakeFiles/test.dir
 /Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/Tests/CMakeFiles/edit_cache.dir
 /Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/Tests/CMakeFiles/rebuild_cache.dir

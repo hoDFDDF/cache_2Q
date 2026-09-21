@@ -102,6 +102,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "modules/CMakeFiles/LFU-cache.dir/DependInfo.cmake"
   "Tests/CMakeFiles/unit_tests_2q.dir/DependInfo.cmake"
   "Tests/CMakeFiles/unit_tests_lfu.dir/DependInfo.cmake"
+  "Tests/CMakeFiles/lfu_benchmark.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"

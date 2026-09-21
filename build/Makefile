@@ -224,6 +224,19 @@ unit_tests_lfu/fast:
 .PHONY : unit_tests_lfu/fast
 
 #=============================================================================
+# Target rules for targets named lfu_benchmark
+
+# Build rule for target.
+lfu_benchmark: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lfu_benchmark
+.PHONY : lfu_benchmark
+
+# fast build rule for target.
+lfu_benchmark/fast:
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/lfu_benchmark.dir/build.make Tests/CMakeFiles/lfu_benchmark.dir/build
+.PHONY : lfu_benchmark/fast
+
+#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -294,6 +307,7 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... lfu_benchmark"
 	@echo "... unit_tests_2q"
 	@echo "... unit_tests_lfu"
 .PHONY : help

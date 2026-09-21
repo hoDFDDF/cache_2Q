@@ -88,12 +88,14 @@ clean: Tests/clean
 # Recursive "all" directory target.
 Tests/all: Tests/CMakeFiles/unit_tests_2q.dir/all
 Tests/all: Tests/CMakeFiles/unit_tests_lfu.dir/all
+Tests/all: Tests/CMakeFiles/lfu_benchmark.dir/all
 Tests/all: _deps/googletest-build/all
 .PHONY : Tests/all
 
 # Recursive "codegen" directory target.
 Tests/codegen: Tests/CMakeFiles/unit_tests_2q.dir/codegen
 Tests/codegen: Tests/CMakeFiles/unit_tests_lfu.dir/codegen
+Tests/codegen: Tests/CMakeFiles/lfu_benchmark.dir/codegen
 Tests/codegen: _deps/googletest-build/codegen
 .PHONY : Tests/codegen
 
@@ -104,6 +106,7 @@ Tests/preinstall: _deps/googletest-build/preinstall
 # Recursive "clean" directory target.
 Tests/clean: Tests/CMakeFiles/unit_tests_2q.dir/clean
 Tests/clean: Tests/CMakeFiles/unit_tests_lfu.dir/clean
+Tests/clean: Tests/CMakeFiles/lfu_benchmark.dir/clean
 Tests/clean: _deps/googletest-build/clean
 .PHONY : Tests/clean
 
@@ -231,7 +234,7 @@ modules/CMakeFiles/2Q-cache.dir/clean:
 # Target rules for target modules/CMakeFiles/LFU-cache.dir
 
 # All Build rule for target.
-modules/CMakeFiles/LFU-cache.dir/all:
+modules/CMakeFiles/LFU-cache.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f modules/CMakeFiles/LFU-cache.dir/build.make modules/CMakeFiles/LFU-cache.dir/depend
 	$(MAKE) $(MAKESILENT) -f modules/CMakeFiles/LFU-cache.dir/build.make modules/CMakeFiles/LFU-cache.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=3,4 "Built target LFU-cache"
@@ -239,7 +242,7 @@ modules/CMakeFiles/LFU-cache.dir/all:
 
 # Build rule for subdir invocation for target.
 modules/CMakeFiles/LFU-cache.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/CMakeFiles/LFU-cache.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" 0
 .PHONY : modules/CMakeFiles/LFU-cache.dir/rule
@@ -268,7 +271,7 @@ Tests/CMakeFiles/unit_tests_2q.dir/all: _deps/googletest-build/googlemock/CMakeF
 Tests/CMakeFiles/unit_tests_2q.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_2q.dir/build.make Tests/CMakeFiles/unit_tests_2q.dir/depend
 	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_2q.dir/build.make Tests/CMakeFiles/unit_tests_2q.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=13,14 "Built target unit_tests_2q"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=15,16 "Built target unit_tests_2q"
 .PHONY : Tests/CMakeFiles/unit_tests_2q.dir/all
 
 # Build rule for subdir invocation for target.
@@ -285,7 +288,7 @@ unit_tests_2q: Tests/CMakeFiles/unit_tests_2q.dir/rule
 # codegen rule for target.
 Tests/CMakeFiles/unit_tests_2q.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_2q.dir/build.make Tests/CMakeFiles/unit_tests_2q.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=13,14 "Finished codegen for target unit_tests_2q"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=15,16 "Finished codegen for target unit_tests_2q"
 .PHONY : Tests/CMakeFiles/unit_tests_2q.dir/codegen
 
 # clean rule for target.
@@ -302,7 +305,7 @@ Tests/CMakeFiles/unit_tests_lfu.dir/all: _deps/googletest-build/googlemock/CMake
 Tests/CMakeFiles/unit_tests_lfu.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_lfu.dir/build.make Tests/CMakeFiles/unit_tests_lfu.dir/depend
 	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_lfu.dir/build.make Tests/CMakeFiles/unit_tests_lfu.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=15,16 "Built target unit_tests_lfu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=17,18 "Built target unit_tests_lfu"
 .PHONY : Tests/CMakeFiles/unit_tests_lfu.dir/all
 
 # Build rule for subdir invocation for target.
@@ -319,13 +322,45 @@ unit_tests_lfu: Tests/CMakeFiles/unit_tests_lfu.dir/rule
 # codegen rule for target.
 Tests/CMakeFiles/unit_tests_lfu.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_lfu.dir/build.make Tests/CMakeFiles/unit_tests_lfu.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=15,16 "Finished codegen for target unit_tests_lfu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=17,18 "Finished codegen for target unit_tests_lfu"
 .PHONY : Tests/CMakeFiles/unit_tests_lfu.dir/codegen
 
 # clean rule for target.
 Tests/CMakeFiles/unit_tests_lfu.dir/clean:
 	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_lfu.dir/build.make Tests/CMakeFiles/unit_tests_lfu.dir/clean
 .PHONY : Tests/CMakeFiles/unit_tests_lfu.dir/clean
+
+#=============================================================================
+# Target rules for target Tests/CMakeFiles/lfu_benchmark.dir
+
+# All Build rule for target.
+Tests/CMakeFiles/lfu_benchmark.dir/all: modules/CMakeFiles/LFU-cache.dir/all
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/lfu_benchmark.dir/build.make Tests/CMakeFiles/lfu_benchmark.dir/depend
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/lfu_benchmark.dir/build.make Tests/CMakeFiles/lfu_benchmark.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=13,14 "Built target lfu_benchmark"
+.PHONY : Tests/CMakeFiles/lfu_benchmark.dir/all
+
+# Build rule for subdir invocation for target.
+Tests/CMakeFiles/lfu_benchmark.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tests/CMakeFiles/lfu_benchmark.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" 0
+.PHONY : Tests/CMakeFiles/lfu_benchmark.dir/rule
+
+# Convenience name for target.
+lfu_benchmark: Tests/CMakeFiles/lfu_benchmark.dir/rule
+.PHONY : lfu_benchmark
+
+# codegen rule for target.
+Tests/CMakeFiles/lfu_benchmark.dir/codegen: modules/CMakeFiles/LFU-cache.dir/all
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/lfu_benchmark.dir/build.make Tests/CMakeFiles/lfu_benchmark.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/pashamalyshev/Library/Mobile Documents/com~apple~CloudDocs/GitHub/cache_2Q/build/CMakeFiles" --progress-num=13,14 "Finished codegen for target lfu_benchmark"
+.PHONY : Tests/CMakeFiles/lfu_benchmark.dir/codegen
+
+# clean rule for target.
+Tests/CMakeFiles/lfu_benchmark.dir/clean:
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/lfu_benchmark.dir/build.make Tests/CMakeFiles/lfu_benchmark.dir/clean
+.PHONY : Tests/CMakeFiles/lfu_benchmark.dir/clean
 
 #=============================================================================
 # Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock.dir
