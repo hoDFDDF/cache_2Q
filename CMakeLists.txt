@@ -9,6 +9,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 option(ENABLE_ASAN "Enable AddressSanitizer for Debug builds" OFF)
 
+enable_testing()
+
 add_subdirectory(modules)
 
 add_subdirectory(Tests)

@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = "/Users/pashamalyshev/Library/Mobile Documents/com~apple~Clou
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/opt/homebrew/bin/ctest $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -188,17 +198,30 @@ LFU-cache/fast:
 .PHONY : LFU-cache/fast
 
 #=============================================================================
-# Target rules for targets named unit_tests
+# Target rules for targets named unit_tests_2q
 
 # Build rule for target.
-unit_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests
-.PHONY : unit_tests
+unit_tests_2q: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests_2q
+.PHONY : unit_tests_2q
 
 # fast build rule for target.
-unit_tests/fast:
-	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests.dir/build.make Tests/CMakeFiles/unit_tests.dir/build
-.PHONY : unit_tests/fast
+unit_tests_2q/fast:
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_2q.dir/build.make Tests/CMakeFiles/unit_tests_2q.dir/build
+.PHONY : unit_tests_2q/fast
+
+#=============================================================================
+# Target rules for targets named unit_tests_lfu
+
+# Build rule for target.
+unit_tests_lfu: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests_lfu
+.PHONY : unit_tests_lfu
+
+# fast build rule for target.
+unit_tests_lfu/fast:
+	$(MAKE) $(MAKESILENT) -f Tests/CMakeFiles/unit_tests_lfu.dir/build.make Tests/CMakeFiles/unit_tests_lfu.dir/build
+.PHONY : unit_tests_lfu/fast
 
 #=============================================================================
 # Target rules for targets named gmock
@@ -264,13 +287,15 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... 2Q-cache"
 	@echo "... LFU-cache"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... unit_tests"
+	@echo "... unit_tests_2q"
+	@echo "... unit_tests_lfu"
 .PHONY : help
 
 

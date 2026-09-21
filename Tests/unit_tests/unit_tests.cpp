@@ -129,9 +129,3 @@ TEST (HashTableCheck,  NoMemoryLeaksUnderStress) {
     
     EXPECT_LE(cache.hash_.size(), cache.hot_sz_ + cache.in_sz_ + cache.out_sz_);
 }
-
-int main(int argc, char* argv[]){
-
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

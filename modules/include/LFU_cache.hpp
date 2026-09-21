@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <iostream>
 #include <iterator>
+#include <gtest/gtest_prod.h>
 #include <vector>
 #include <unordered_map>
 #include <list>
@@ -12,6 +13,14 @@ namespace cache {
     template <typename keyT, typename Value>
 
     class cache_LFU_ {
+        FRIEND_TEST(lookUpUpdateTests, firstGroupDeleted);
+        FRIEND_TEST(LfuCacheTests, evictOneRemovesEmptyGroup);
+        FRIEND_TEST(LfuCacheTests, evictOneRemovesLastEntry);
+        FRIEND_TEST(LfuCacheTests, putStoresValuesAndIterators);
+        FRIEND_TEST(LfuCacheTests, evictsOldestKeyInLowestFrequencyGroup);
+        FRIEND_TEST(LfuCacheTests, copyConstructorRebindsIterators);
+        FRIEND_TEST(LfuCacheTests, copyAssignmentRebindsIterators);
+
         std::size_t capacity_;
         
         struct FrequencyGroup {
