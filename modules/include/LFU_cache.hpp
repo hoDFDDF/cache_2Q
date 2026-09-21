@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <iostream>
+#include <iterator>
 #include <vector>
 #include <unordered_map>
 #include <list>
@@ -22,8 +23,8 @@ namespace cache {
         
         struct Entry {
             Value value;
-            typename FrequencyGroupsLst::iterator group_it;
-            typename std::list<KeyT>::iterator key_it;
+            typename std::list<FrequencyGroup>::iterator group_it;
+            typename std::list<keyT>::iterator key_it;
         };
 
         std::unordered_map<keyT, Entry> entries_;
@@ -50,9 +51,9 @@ namespace cache {
 
         // increase frequency existing element
         void touch(Entry& entry) {
-            auto cur_group_it = entry.group_it;
-            next_group_it = ++cur_group_it;
-            new_frequency = ++entry.group_it->frequency;
+            auto cur_group_it  = entry.group_it;
+            auto next_group_it = std::next(cur_group_it);
+            std::size_t new_frequency = entry.group_it->frequency + 1;
 
             if (next_group_it == Fgroups_.end() ||
                 next_group_it->frequency != new_frequency) {
@@ -94,10 +95,11 @@ namespace cache {
 
             // the main public function. True if element is in cache, false against
             bool lookUpUpdate(const keyT& key, F slow_get_page) {
-                if (capasity_ == 0) return false;
+                if (capacity_ == 0) return false;
 
                 if (get(key)) {
-                    touch(entries_.find(key));
+                    auto entry_it = entries_.find(key);
+                    touch(entry_it->second);
                     return true;
                 }
                 
